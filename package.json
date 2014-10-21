@@ -1,0 +1,40 @@
+{
+  "name": "dailyconnect",
+  "version": "1.0.0",
+  "description": "API to access data from dailyconnect.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Dan Flettre",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "mocha": "^1.21.5",
+    "sinon": "^1.10.3"
+  },
+  "dependencies": {
+    "dateformat": "^1.0.8",
+    "tough-cookie": "^0.12.1"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Flet/dailyconnect"
+  },
+  "keywords": [
+    "dailyconnect",
+    "babyconnect",
+    "daily",
+    "connect",
+    "baby",
+    "api",
+    "wrapper"
+  ],
+  "bugs": {
+    "url": "https://github.com/Flet/dailyconnect/issues"
+  },
+  "homepage": "https://github.com/Flet/dailyconnect"
+}
