@@ -13,8 +13,7 @@
   "devDependencies": {
     "chai": "^1.9.2",
     "mocha": "^1.21.5",
-    "nock": "^0.48.1",
-    "sinon": "^1.10.3"
+    "nock": "^0.48.1"
   },
   "dependencies": {
     "dateformat": "^1.0.8",
