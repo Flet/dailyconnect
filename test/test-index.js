@@ -1,7 +1,7 @@
 require('mocha')
 
 var chai = require('chai'),
-  nock = require('nock') // we require nock
+  nock = require('nock')
 
 var assert = chai.assert
 
@@ -11,11 +11,11 @@ var email = 'fake@fakey.nope', //process.env.EMAIL,
 
 var useNock = true
 // nock.recorder.rec()
-describe('daily connect api tests', function () {
+describe('dailyconnect API tests', function () {
   var Api = require('../')
   var api = new Api(email, pass)
 
-  it('returns true on successful login (302)', function (done) {
+  it('login returns true on successful login (302)', function (done) {
     if (useNock) {
       nock('https://www.dailyconnect.com:443')
         .post('/Cmd?cmd=UserAuth', 'email=fake%40fakey.nope&pass=secret')
@@ -39,7 +39,7 @@ describe('daily connect api tests', function () {
     })
   })
 
-  it('returns user info', function (done) {
+  it('getUserInfo returns user info', function (done) {
     if (useNock) {
       nock('https://www.dailyconnect.com:443')
         .post('/CmdW', 'cmd=UserInfoW')
@@ -98,7 +98,7 @@ describe('daily connect api tests', function () {
         })
     }
 
-    api.userInfo(function (err, user) {
+    api.getUserInfo(function (err, user) {
       if (err) {
         assert.fail(err, true)
         done()
@@ -109,7 +109,7 @@ describe('daily connect api tests', function () {
     })
   })
 
-  it('returns kid summary', function (done) {
+  it('getKidSummaryByDay returns kid summary', function (done) {
 
     if (useNock) {
       nock('https://www.dailyconnect.com:443')
@@ -138,7 +138,7 @@ describe('daily connect api tests', function () {
         })
     }
 
-    api.kidSummary(kidid, new Date(2014, 9, 22), function (err, kidinfo) {
+    api.getKidSummaryByDay(kidid, new Date(2014, 9, 22), function (err, kidinfo) {
       if (err) {
         assert.fail(err, true)
         done()
@@ -149,7 +149,7 @@ describe('daily connect api tests', function () {
     })
   })
 
-  it('returns kid daily status', function (done) {
+  it('getKidStatusByDay returns kid daily status', function (done) {
 
     if (useNock) {
       nock('https://www.dailyconnect.com:443')
@@ -300,7 +300,7 @@ describe('daily connect api tests', function () {
         })
     }
 
-    api.kidStatus(kidid, new Date(2014, 9, 22), function (err, status) {
+    api.getKidStatusByDay(kidid, new Date(2014, 9, 22), function (err, status) {
       if (err) {
         assert.fail(err, true)
         done()
@@ -312,7 +312,7 @@ describe('daily connect api tests', function () {
     })
   })
 
-  it('returns photo', function (done) {
+  it('getPhoto returns buffer with type property', function (done) {
 
     if (useNock) {
       nock('https://www.dailyconnect.com:443')

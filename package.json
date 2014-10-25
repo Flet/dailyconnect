@@ -4,7 +4,9 @@
   "description": "API to access data from dailyconnect.com",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "testwithlog": "DC_ENV=test mocha",
+    "coverage": "istanbul cover node_modules/.bin/_mocha && xdg-open coverage/lcov-report/index.html"
   },
   "author": "Dan Flettre",
   "license": "ISC",

@@ -1,31 +1,7 @@
 var request = require('request'),
   dateformat = require('dateformat'),
-  qs = require('querystring')
-
-var log
-if (process.env.DC_ENV === 'test') {
-  log = function logger(obj) {
-    console.log(obj)
-  }
-} else {
-  log = function noop() {}
-}
-
-var logRequest = function (req) {
-  log('~~~REQUEST~~~')
-  log(req)
-}
-
-var logResponse = function (err, resp, body) {
-  log('~~~RESPONSE~~~')
-  log({
-    err: err,
-    headers: resp ? resp.headers : null,
-    statusCode: resp ? resp.statusCode : null,
-    body: body
-  })
-  log('~~~')
-}
+  qs = require('querystring'),
+  logger = require('./logger.js')
 
 var Api = function (email, pass) {
   this.email = email
@@ -44,10 +20,10 @@ Api.prototype.login = function (cb) {
     url: 'https://www.dailyconnect.com/Cmd?cmd=UserAuth'
   }
 
-  logRequest(req)
+  logger.logReq(req)
 
   request(req, function (err, response, body) {
-    logResponse(err, response, body)
+    logger.logResp(err, response, body)
     if (err) {
       return cb(err)
     }
@@ -59,7 +35,7 @@ Api.prototype.login = function (cb) {
   })
 }
 
-Api.prototype.userInfo = function (cb) {
+Api.prototype.getUserInfo = function (cb) {
   var req = {
     jar: this.jar,
     form: {
@@ -69,10 +45,10 @@ Api.prototype.userInfo = function (cb) {
     url: 'https://www.dailyconnect.com/CmdW'
   }
 
-  logRequest(req)
+  logger.logReq(req)
 
   request(req, function (err, response, body) {
-    logResponse(err, response, body)
+    logger.logResp(err, response, body)
     if (err) {
       return cb(err)
     }
@@ -84,8 +60,11 @@ Api.prototype.userInfo = function (cb) {
   })
 }
 
-Api.prototype.kidSummary = function (kidId, inDate, cb) {
+Api.prototype.getKidSummary = function (kidId, cb) {
+  this.getKidSummaryByDay(kidId, new Date(), cb)
+}
 
+Api.prototype.getKidSummaryByDay = function (kidId, inDate, cb) {
   var req = {
     jar: this.jar,
     form: {
@@ -97,10 +76,10 @@ Api.prototype.kidSummary = function (kidId, inDate, cb) {
     url: 'https://www.dailyconnect.com/CmdW'
   }
 
-  logRequest(req)
+  logger.logReq(req)
 
   request(req, function (err, response, body) {
-    logResponse(err, response, body)
+    logger.logResp(err, response, body)
     if (err) {
       return cb(err)
     }
@@ -111,7 +90,12 @@ Api.prototype.kidSummary = function (kidId, inDate, cb) {
   })
 }
 
-Api.prototype.kidStatus = function (kidId, inDate, cb) {
+Api.prototype.getKidStatus = function (kidId, cb) {
+  this.getKidStatusByDay(kidId, new Date(), cb)
+}
+
+Api.prototype.getKidStatusByDay = function (kidId, inDate, cb) {
+  // TODO: possibly add optional 'fmt' arg instead of defauting to 'long'
   var req = {
     jar: this.jar,
     form: {
@@ -124,10 +108,10 @@ Api.prototype.kidStatus = function (kidId, inDate, cb) {
     url: 'https://www.dailyconnect.com/CmdListW'
   }
 
-  logRequest(req)
+  logger.logReq(req)
 
   request(req, function (err, response, body) {
-    logResponse(err, response, body)
+    logger.logResp(err, response, body)
     if (err) {
       return cb(err)
     }
@@ -150,10 +134,10 @@ Api.prototype.getPhoto = function (photoId, cb) {
     })
   }
 
-  logRequest(req)
+  logger.logReq(req)
 
   request(req, function (err, response, body) {
-    logResponse(err, response, body)
+    logger.logResp(err, response, body)
     if (err) {
       return cb(err)
     }
