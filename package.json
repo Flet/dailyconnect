@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "dateformat": "^1.0.8",
+    "request": "^2.46.0",
     "tough-cookie": "^0.12.1"
   },
   "directories": {
