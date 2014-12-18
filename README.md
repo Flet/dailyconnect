@@ -1,3 +1,5 @@
+[![NPM](https://nodei.co/npm/dailyconnect.png?compact=true)](https://nodei.co/npm/dailyconnect/)
+
 dailyconnect
 ============
 

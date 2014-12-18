@@ -7,12 +7,6 @@ var pass = process.argv[3]
 
 var mydc = new DailyConnect(user, pass)
 
-async.waterfall([
-  mydc.login.bind(mydc),
-  mydc.getUserInfo.bind(mydc),
-  gatherKidsLatestStatus
-], completed)
-
 function gatherKidsLatestStatus(userInfo, cb) {
 
   var latestKidEvents = []
@@ -44,9 +38,14 @@ function gatherKidsLatestStatus(userInfo, cb) {
 }
 
 function completed(err, result) {
-  console.log('done!')
   if (err) {
     console.error(err)
   }
   console.log(result)
 }
+
+async.waterfall([
+  mydc.login.bind(mydc),
+  mydc.getUserInfo.bind(mydc),
+  gatherKidsLatestStatus
+], completed)
