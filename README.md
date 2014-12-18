@@ -1,4 +1,6 @@
 [![NPM](https://nodei.co/npm/dailyconnect.png?compact=true)](https://nodei.co/npm/dailyconnect/)
+![travis build status](https://travis-ci.org/Flet/dailyconnect.svg)
+![deps](https://david-dm.org/flet/dailyconnect.png)
 
 dailyconnect
 ============
