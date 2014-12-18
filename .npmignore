@@ -6,3 +6,4 @@
 .npmignore
 coverage/
 test/
+example.js
