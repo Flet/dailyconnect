@@ -11,13 +11,13 @@
   "author": "Dan Flettre",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^1.9.2",
-    "mocha": "^1.21.5",
-    "nock": "^0.48.1"
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1",
+    "nock": "^0.52.2"
   },
   "dependencies": {
-    "dateformat": "^1.0.8",
-    "request": "^2.46.0",
+    "dateformat": "^1.0.11",
+    "request": "^2.51.0",
     "tough-cookie": "^0.12.1"
   },
   "directories": {
