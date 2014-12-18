@@ -15,7 +15,7 @@ describe('dailyconnect API tests', function () {
   var Api = require('../')
   var api = new Api(email, pass)
 
-  it('login returns true on successful login (302)', function (done) {
+  it('No error on successful login (302)', function (done) {
     if (useNock) {
       nock('https://www.dailyconnect.com:443')
         .post('/Cmd?cmd=UserAuth', 'email=fake%40fakey.nope&pass=secret')
@@ -30,11 +30,10 @@ describe('dailyconnect API tests', function () {
         })
     }
 
-    api.login(function (err, loggedOn) {
+    api.login(function (err) {
       if (err) {
         assert.fail(err, true)
       }
-      assert(loggedOn, 'response not ok')
       done()
     })
   })

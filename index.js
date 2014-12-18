@@ -28,7 +28,7 @@ Api.prototype.login = function (cb) {
       return cb(err)
     }
     if (response.statusCode === 302) {
-      return cb(null, true)
+      return cb(null)
     }
     var loginerr = new Error('Error on login' + response.statusCode)
     return cb(loginerr)
