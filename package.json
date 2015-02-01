@@ -4,7 +4,7 @@
   "description": "API to access data from dailyconnect.com",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "standard && mocha",
     "testwithlog": "DC_ENV=test mocha",
     "coverage": "istanbul cover node_modules/.bin/_mocha && xdg-open coverage/lcov-report/index.html"
   },
@@ -13,7 +13,8 @@
   "devDependencies": {
     "chai": "^1.10.0",
     "mocha": "^2.0.1",
-    "nock": "^0.52.2"
+    "nock": "^0.52.2",
+    "standard": "*"
   },
   "dependencies": {
     "dateformat": "^1.0.11",

@@ -7,8 +7,7 @@ var pass = process.argv[3]
 
 var mydc = new DailyConnect(user, pass)
 
-function gatherKidsLatestStatus(userInfo, cb) {
-
+function gatherKidsLatestStatus (userInfo, cb) {
   var latestKidEvents = []
   async.each(userInfo.myKids, getLatestEvent, function (err) {
     if (err) {
@@ -17,7 +16,7 @@ function gatherKidsLatestStatus(userInfo, cb) {
     cb(null, latestKidEvents)
   })
 
-  function getLatestEvent(kid, cb) {
+  function getLatestEvent (kid, cb) {
     mydc.getKidStatus(kid.Id, function (err, kidStatus) {
       if (err) {
         return cb(err)
@@ -37,7 +36,7 @@ function gatherKidsLatestStatus(userInfo, cb) {
   }
 }
 
-function completed(err, result) {
+function completed (err, result) {
   if (err) {
     console.error(err)
   }

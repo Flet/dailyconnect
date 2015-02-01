@@ -1,13 +1,13 @@
 require('mocha')
 
-var chai = require('chai'),
-  nock = require('nock')
+var chai = require('chai')
+var nock = require('nock')
 
 var assert = chai.assert
 
-var email = 'fake@fakey.nope', //process.env.EMAIL,
-  pass = 'secret', //process.env.PASS,
-  kidid = '1234567890123456' //process.env.KIDID
+var email = 'fake@fakey.nope' // process.env.EMAIL,
+var pass = 'secret' // process.env.PASS,
+var kidid = '1234567890123456' // process.env.KIDID
 
 var useNock = true
 // nock.recorder.rec()
@@ -109,7 +109,6 @@ describe('dailyconnect API tests', function () {
   })
 
   it('getKidSummaryByDay returns kid summary', function (done) {
-
     if (useNock) {
       nock('https://www.dailyconnect.com:443')
         .post('/CmdW', 'cmd=KidGetSummary&Kid=1234567890123456&pdt=141022')
@@ -149,7 +148,6 @@ describe('dailyconnect API tests', function () {
   })
 
   it('getKidStatusByDay returns kid daily status', function (done) {
-
     if (useNock) {
       nock('https://www.dailyconnect.com:443')
         .post('/CmdListW', 'cmd=StatusList&Kid=1234567890123456&pdt=141022&fmt=long')
@@ -312,7 +310,6 @@ describe('dailyconnect API tests', function () {
   })
 
   it('getPhoto returns buffer with type property', function (done) {
-
     if (useNock) {
       nock('https://www.dailyconnect.com:443')
         .get('/GetCmd?cmd=PhotoGet&id=12345&thumb=0')
@@ -323,7 +320,6 @@ describe('dailyconnect API tests', function () {
           server: 'Google Frontend',
           'content-length': '4415'
         })
-
     }
     api.getPhoto(12345, function (err, photo) {
       if (err) {
@@ -335,5 +331,4 @@ describe('dailyconnect API tests', function () {
       done()
     })
   })
-
 })

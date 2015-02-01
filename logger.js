@@ -1,10 +1,10 @@
 var log
 if (process.env.DC_ENV === 'test') {
-  log = function logger(obj) {
+  log = function logger (obj) {
     console.log(obj)
   }
 } else {
-  log = function noop() {}
+  log = function noop () {}
 }
 
 module.exports.logReq = function (req) {

@@ -1,7 +1,7 @@
-var request = require('request'),
-  dateformat = require('dateformat'),
-  qs = require('querystring'),
-  logger = require('./logger.js')
+var request = require('request')
+var dateformat = require('dateformat')
+var qs = require('querystring')
+var logger = require('./logger.js')
 
 var Api = function (email, pass) {
   this.email = email
