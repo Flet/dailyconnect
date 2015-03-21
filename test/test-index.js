@@ -1,3 +1,4 @@
+/* global describe, it */
 require('mocha')
 
 var chai = require('chai')
